@@ -104,7 +104,7 @@ endif
 
 if !exists('g:fullscreen_font')
 	if has("gui_macvim")
-		let g:fullscreen_font = "Cousine:h14"
+		let g:fullscreen_font = "Cousine:h15"
 	else
 		let g:fullscreen_font = "Cousine 12"
 	endif
@@ -112,7 +112,7 @@ endif
 
 if !exists('g:normal_colorscheme')
 	if has("gui_macvim")
-		let g:normal_colorscheme = "codeschool"
+		let g:normal_colorscheme = "Hybrid"
 	else
 		let g:normal_colorscheme = g:colors_name
 	end
@@ -120,13 +120,13 @@ endif
 
 if !exists('g:normal_font')
 	if has("gui_macvim")
-		let g:normal_font="Inconsolata:h14"
+		let g:normal_font="Meslo\ LG\ \L\ DZ\ for\ Powerline\:h14"
 	else
 		let g:normal_font=&guifont
 	endif
 endif
 
-:map <F4> :call ToggleDistractionFreeWriting()<CR>
+map <Leader>df :call ToggleDistractionFreeWriting()<CR>
 
 " turn-on distraction free writing mode by default for markdown files
 " au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} call DistractionFreeWriting()
