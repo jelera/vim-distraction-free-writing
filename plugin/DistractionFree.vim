@@ -2,7 +2,9 @@
 "      Maintainer: Jose Elera (https://github.com/jelera)
 " Original Author: Lakshan Perera (lakshan AT web2media net)
 "             URL: https://github.com/laktek/distraction-free-writing-vim
-"     Last Update: Sun 08 Dec 2013 03:31:59 PM CST
+"     Last Update: Sun 08 Dec 2013 04:57:39 PM CST
+"
+" TODO: Add support for terminal Vim
 "
 " Copy this file to .vim/plugin.
 "
@@ -43,6 +45,7 @@ function! DistractionFreeWriting()
 	set guioptions-=r       " remove righ scrollbar
 	set laststatus=0        " don't show status line
 	set noruler             " don't show ruler
+	set colorcolumn=300     " set the column away from the viewport
 	if has("gui_macvim")
 		set fuoptions=background:#00f5f6f6 " bakground color
 		set fullscreen
@@ -61,6 +64,7 @@ function! ToggleDistractionFreeWriting()
 		exec "set columns=".s:prev_columns
 		exec "set linespace=".s:prev_linespace
 		exec "set laststatus=".s:prev_laststatus
+		exec "set colorcolumn=".s:prev_colorcolumn
 		exec "set guioptions+=r"
 
 		set noruler!
@@ -83,6 +87,7 @@ function! ToggleDistractionFreeWriting()
 		let s:prev_lines = &lines
 		let s:prev_columns = &columns
 		let s:prev_linespace = &linespace
+		let s:prev_colorcolumn = &colorcolumn
 		if has("gui_macvim")
 			let s:prev_fuoptions = &fuoptions
 		endif
