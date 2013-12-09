@@ -2,7 +2,7 @@
 "      Maintainer: Jose Elera (https://github.com/jelera)
 " Original Author: Lakshan Perera (lakshan AT web2media net)
 "             URL: https://github.com/laktek/distraction-free-writing-vim
-"     Last Update: Sun 08 Dec 2013 04:57:39 PM CST
+"     Last Update: Mon 09 Dec 2013 12:35:40 AM CST
 "
 " TODO: Add support for terminal Vim
 "
@@ -22,6 +22,7 @@
 " :map <F4> :call ToggleDistractionFreeWriting()<CR>
 
 "initVariable borrowed from NERDTree
+
 function! s:initVariable(var, value)
 	if !exists(a:var)
 		exec 'let ' . a:var . ' = ' . "'" . a:value . "'"
@@ -34,6 +35,31 @@ endfunction
 call s:initVariable("g:distractionFreeFullscreen", "off")
 
 function! DistractionFreeWriting()
+
+	" If vim-airline and bufferline is installed then toggle it
+	if exists('g:airline_theme')
+		exec "AirlineToggle"
+	endif
+	if exists('g:bufferline_echo')
+		let g:bufferline_echo = 0
+	endif
+
+	function! WordCount()
+		let s:old_status = v:statusmsg
+		let position = getpos(".")
+		exe ":silent normal g\<C-g>"
+		let stat = v:statusmsg
+		let s:word_count = 0
+		if stat != '--No lines in buffer--'
+			let s:word_count = str2nr(split(v:statusmsg)[11])
+			let v:statusmsg = s:old_status
+		end
+		call setpos('.', position)
+		return s:word_count
+	endfunction
+
+	set statusline=%<\ %t\ %m%r%=%-14.(%{WordCount()}\ words\ \ %L\ lines\ \ \ \ %l,%c%)\ \ %p%%
+
 	exec "colorscheme ".g:fullscreen_colorscheme
 	" added escape function to allow for multiword font names
 	" (AmaruCoder)
@@ -43,7 +69,6 @@ function! DistractionFreeWriting()
 	set lines=40 columns=90 " size of the editable area
 	set linespace=5         " spacing between lines
 	set guioptions-=r       " remove righ scrollbar
-	set laststatus=0        " don't show status line
 	set noruler             " don't show ruler
 	set colorcolumn=300     " set the column away from the viewport
 	if has("gui_macvim")
@@ -95,6 +120,7 @@ function! ToggleDistractionFreeWriting()
 		let s:prev_font = &gfn
 
 		call DistractionFreeWriting()
+
 	endif
 endfunction
 
