@@ -1,5 +1,5 @@
 "
-" Last Change: 2011/12/11
+" Last Change: Mon 09 Dec 2013 12:28:43 AM CST
 " Maintainer:  Jacek Dominiak <doj (at) ptpbs (dot) com>
 "
 " Description: Vim color file
@@ -13,7 +13,7 @@ endif
 
 let g:colors_name="iawriter"
 
-hi Cursor       guifg=fg   		guibg=#54D4FF 
+hi Cursor       guifg=fg   		guibg=#54D4FF
 hi Normal       guifg=#424242 guibg=#f5f6f6          ctermfg=black    ctermbg=white
 hi DiffAdd                    guibg=#c0ffe0                           ctermbg=3
 hi DiffDelete   guifg=#ff8097 guibg=#ffe0f7          ctermfg=4        ctermbg=5
@@ -23,14 +23,14 @@ hi NonText      guifg=bg			guibg=bg 			gui=NONE ctermfg=darkblue
 hi SpecialKey   guifg=grey50  guibg=grey86  gui=NONE ctermfg=darkblue
 hi LineNr       guifg=bg 			guibg=bg          ctermfg=darkblue
 hi Search                     guibg=#fff999
-hi StatusLine   guifg=bg      guibg=#333333 gui=NONE ctermfg=bg       ctermbg=black cterm=NONE
+hi StatusLine   guifg=grey guibg=#F2F2F2 gui=NONE ctermfg=bg       ctermbg=black cterm=NONE
 hi StatusLineNC guifg=bg      guibg=grey40  gui=NONE ctermfg=bg       ctermbg=black cterm=NONE
 hi Visual       guifg=fg      guibg=#ccccdd gui=NONE
 hi VisualNOS    guifg=bg      guibg=#ccccdd gui=NONE
 
 " syntax highlighting groups
 hi Comment      guifg=#000099 guibg=bg               ctermfg=darkblue
-hi String       guifg=fg 			guibg=#e0e4cc          ctermfg=darkred 
+hi String       guifg=fg 			guibg=#e0e4cc          ctermfg=darkred
 hi Constant     guifg=#c033ff guibg=bg               ctermfg=darkmagenta
 hi Statement    guifg=#737373 guibg=bg               ctermfg=black                  cterm=NONE
 hi PreProc      guifg=#335588 guibg=bg      gui=NONE ctermfg=blue
